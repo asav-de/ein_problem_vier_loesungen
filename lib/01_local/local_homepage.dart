@@ -18,25 +18,55 @@ class _LocalHomepageState extends State<LocalHomepage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Titel'),
-      ),
-      body: Center(
-        child: Column(
+    return SizedBox(
+      width: double.infinity,
+      child: Scaffold(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text('$_counter', style: Theme.of(context).textTheme.headlineMedium),
+          children: [
+            Container(
+              width: MediaQuery.sizeOf(context).width * 0.8,
+              decoration: const BoxDecoration(color: Colors.blue),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [Text('$_counter'), Text('$_counter')],
+              ),
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _incrementCounter,
+                      child: const Text('Increment'),
+                    ),
+                    Text('$_counter'),
+                    ElevatedButton(
+                      onPressed: _incrementCounter,
+                      child: const Text('Increment'),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _incrementCounter,
+                      child: const Text('Increment'),
+                    ),
+                    Text('$_counter'),
+                    ElevatedButton(
+                      onPressed: _incrementCounter,
+                      child: const Text('Increment'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
