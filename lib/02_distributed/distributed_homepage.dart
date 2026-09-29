@@ -12,6 +12,7 @@ class DistributedHomepage extends StatefulWidget {
 
 class _DistributedHomepageState extends State<DistributedHomepage> {
   /// Counter values, one per quadrant.
+  ///
   final List<int> _counters = [0, 0, 0, 0];
 
   int get _sumCounter => _counters.fold(0, (a, b) => a + b);
@@ -19,14 +20,14 @@ class _DistributedHomepageState extends State<DistributedHomepage> {
   /// Increment the corresponding counter by 1.
   void _incrementCounter(int index) {
     setState(() {
-      _counters[index]++;
+      _counters[index] += 1;
     });
   }
 
   /// Decrement the corresponding counter by 1.
   void _decrementCounter(int index) {
     setState(() {
-      _counters[index]--;
+      _counters[index] -= 1;
     });
   }
 
@@ -52,6 +53,7 @@ class _DistributedHomepageState extends State<DistributedHomepage> {
               ],
             ),
           ),
+
           // ===== 2x2 grid =====
           Expanded(
             child: Column(
