@@ -6,7 +6,7 @@ import 'package:flutter_application_2/03_distributed_with_passive_widgets/distri
 import 'package:flutter_application_2/04_global/global_homepage.dart';
 
 /// Switch this to change which variant is shown.
-const config = Config.local;
+const config = Config.distributed;
 
 void main() {
   runApp(const MyApp());
