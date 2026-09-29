@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/00_general/quadrant.dart';
+import 'package:flutter_application_2/00_general/total_box.dart';
 
+/// Screen with four independent counters, state stored locally.
 class LocalHomepage extends StatefulWidget {
   const LocalHomepage({super.key});
 
@@ -8,35 +11,133 @@ class LocalHomepage extends StatefulWidget {
 }
 
 class _LocalHomepageState extends State<LocalHomepage> {
-  int _counter = 0;
+  /// Counter values, one per quadrant.
+  int _counter_1 = 0;
+  int _counter_2 = 0;
+  int _counter_3 = 0;
+  int _counter_4 = 0;
+  int get _sumCounter => _counter_1 + _counter_2 + _counter_3 + _counter_4;
 
-  void _incrementCounter() {
+  /// Increment the corresponding counter by 1.
+  void _incrementCounter_1() {
     setState(() {
-      _counter++;
+      _counter_4++;
+    });
+  }
+
+  void _incrementCounter_2() {
+    setState(() {
+      _counter_3++;
+    });
+  }
+
+  void _incrementCounter_3() {
+    setState(() {
+      _counter_2++;
+    });
+  }
+
+  void _incrementCounter_4() {
+    setState(() {
+      _counter_1++;
+    });
+  }
+
+  /// Decrement the corresponding counter by 1.
+  void _decrementCounter_1() {
+    setState(() {
+      _counter_4--;
+    });
+  }
+
+  void _decrementCounter_2() {
+    setState(() {
+      _counter_3--;
+    });
+  }
+
+  void _decrementCounter_3() {
+    setState(() {
+      _counter_2--;
+    });
+  }
+
+  void _decrementCounter_4() {
+    setState(() {
+      _counter_1--;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Titel'),
+      body: Column(
+        children: [
+          // ===== Top bar =====
+          Container(
+            height: 70,
+            color: const Color(0xFF1B5E82),
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TotalBox(value: _sumCounter),
+                const Text(
+                  'Overengineered Counter',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                TotalBox(value: _sumCounter),
+              ],
+            ),
+          ),
+
+          // ===== 2x2 grid =====
+          Expanded(
+            child: Column(
+              children: [
+                // --- top row ---
+                Expanded(
+                  child: Row(
+                    children: [
+                      // top-left quadrant
+                      Quadrant(
+                        increment: _incrementCounter_1,
+                        decrement: _decrementCounter_1,
+                        counter: _counter_1,
+                      ),
+                      // top-right quadrant
+                      Quadrant(
+                        increment: _incrementCounter_2,
+                        decrement: _decrementCounter_2,
+                        counter: _counter_2,
+                      ),
+                    ],
+                  ),
+                ),
+                // --- bottom row ---
+                Expanded(
+                  child: Row(
+                    children: [
+                      // bottom-left quadrant
+                      Quadrant(
+                        increment: _incrementCounter_3,
+                        decrement: _decrementCounter_3,
+                        counter: _counter_3,
+                      ),
+                      // bottom-right quadrant
+                      Quadrant(
+                        increment: _incrementCounter_4,
+                        decrement: _decrementCounter_4,
+                        counter: _counter_4,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text('$_counter', style: Theme.of(context).textTheme.headlineMedium),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

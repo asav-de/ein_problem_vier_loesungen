@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Variant using global state management (not yet implemented).
 class GlobalHomepage extends StatelessWidget {
   const GlobalHomepage({super.key});
 
