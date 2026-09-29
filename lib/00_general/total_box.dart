@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Displays a single integer value in a compact colored box (used in the top bar).
 class TotalBox extends StatelessWidget {
+  /// The number to display.
   final int value;
 
   const TotalBox({super.key, required this.value});

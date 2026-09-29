@@ -5,12 +5,14 @@ import 'package:flutter_application_2/02_distributed/distributed_homepage.dart';
 import 'package:flutter_application_2/03_distributed_with_passive_widgets/distributed_passive_homepage.dart';
 import 'package:flutter_application_2/04_global/global_homepage.dart';
 
+/// Switch this to change which variant is shown.
 const config = Config.local;
 
 void main() {
   runApp(const MyApp());
 }
 
+/// Root app widget — routes to the active [Config] variant.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
