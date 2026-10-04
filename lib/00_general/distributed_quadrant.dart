@@ -20,41 +20,39 @@ class DistributedQuadrant extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xFF1B5E82)),
-        ),
-        child: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 45,
-                height: 45,
-                color: const Color(0xFF1B5E82),
-                child: IconButton(
-                  onPressed: () => increment(),
-                  icon: const Icon(Icons.arrow_upward, color: Colors.white),
-                ),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: const Color(0xFF1B5E82)),
+      ),
+      child: Center(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 45,
+              height: 45,
+              color: const Color(0xFF1B5E82),
+              child: IconButton(
+                onPressed: () => increment(),
+                icon: const Icon(Icons.arrow_upward, color: Colors.white),
               ),
-              Container(
-                width: 130,
-                height: 45,
-                color: const Color(0xFF8BC98A),
-                child: Center(child: Text('$counter')),
+            ),
+            Container(
+              width: 130,
+              height: 45,
+              color: const Color(0xFF8BC98A),
+              child: Center(child: Text('$counter')),
+            ),
+            Container(
+              width: 45,
+              height: 45,
+              color: const Color(0xFF1B5E82),
+              child: IconButton(
+                onPressed: () => decrement(),
+                icon: const Icon(Icons.arrow_downward, color: Colors.white),
               ),
-              Container(
-                width: 45,
-                height: 45,
-                color: const Color(0xFF1B5E82),
-                child: IconButton(
-                  onPressed: () => decrement(),
-                  icon: const Icon(Icons.arrow_downward, color: Colors.white),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
