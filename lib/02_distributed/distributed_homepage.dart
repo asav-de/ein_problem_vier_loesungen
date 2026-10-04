@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/00_general/distributed_quadrant.dart';
 import 'package:flutter_application_2/00_general/total_box.dart';
 
-/// Variant where state is distributed across child widgets (not yet implemented).
+/// Variant where the parent holds the state and passes callbacks to each quadrant.
+///
+/// Each quadrant's buttons change the diagonally opposite counter.
 class DistributedHomepage extends StatefulWidget {
   const DistributedHomepage({super.key});
 
@@ -12,19 +14,19 @@ class DistributedHomepage extends StatefulWidget {
 
 class _DistributedHomepageState extends State<DistributedHomepage> {
   /// Counter values, one per quadrant.
-  ///
   final List<int> _counters = [0, 0, 0, 0];
 
+  /// Sum of all counters.
   int get _sumCounter => _counters.fold(0, (a, b) => a + b);
 
-  /// Increment the corresponding counter by 1.
+  /// Increments the counter at [index] by 1.
   void _incrementCounter(int index) {
     setState(() {
       _counters[index] += 1;
     });
   }
 
-  /// Decrement the corresponding counter by 1.
+  /// Decrements the counter at [index] by 1.
   void _decrementCounter(int index) {
     setState(() {
       _counters[index] -= 1;

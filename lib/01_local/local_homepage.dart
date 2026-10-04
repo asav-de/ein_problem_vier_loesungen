@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/00_general/quadrant.dart';
 import 'package:flutter_application_2/00_general/total_box.dart';
 
-/// Screen with four independent counters, state stored locally.
+/// Screen with four counters, state stored locally in this widget.
+///
+/// Each quadrant's buttons change the diagonally opposite counter.
 class LocalHomepage extends StatefulWidget {
   const LocalHomepage({super.key});
 
@@ -16,9 +18,11 @@ class _LocalHomepageState extends State<LocalHomepage> {
   int _counter_2 = 0;
   int _counter_3 = 0;
   int _counter_4 = 0;
+
+  /// Sum of all counters.
   int get _sumCounter => _counter_1 + _counter_2 + _counter_3 + _counter_4;
 
-  /// Increment the corresponding counter by 1.
+  /// Increment the diagonally opposite counter by 1.
   void _incrementCounter_1() {
     setState(() {
       _counter_4++;
@@ -43,7 +47,7 @@ class _LocalHomepageState extends State<LocalHomepage> {
     });
   }
 
-  /// Decrement the corresponding counter by 1.
+  /// Decrement the diagonally opposite counter by 1.
   void _decrementCounter_1() {
     setState(() {
       _counter_4--;
